@@ -145,9 +145,6 @@ function WriteVXA(folder)
     vxa =
 "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>
 <VXA Version=\"1.1\">
-    <GPU> <!--1.0 is all gpu memory (dop this on deep green) 0.0 is none (dont' do that) -->
-        <HeapSize>$heapSize</HeapSize>
-    </GPU>
     <Simulator>
         <EnableSignals>$enableSignals</EnableSignals> <!--Voxels send signals to each other, set this to 0 -->
         <EnableCilia>$enableCilia</EnableCilia> <!--Applies external forces simulating cilia -->
