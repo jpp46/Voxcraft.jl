@@ -33,10 +33,6 @@ enableRecordLink = 0
 EnableRecordLink() = enableRecordLink = 1
 DisableRecordLink() = enableRecordLink = 0
 
-enableCilia = 0
-EnableCilia() = enableCilia = 1
-DisableCilia() = enableCilia = 0
-
 enableCollisions = 0
 EnableCollision() = enableCollisions = 1
 DisableCollision() = enableCollisions = 0
