@@ -2,7 +2,7 @@ module Voxcraft
 
 export HeapSize, EnableSignals, DisableSignals, EnableCilia, DisableCilia, EnableExpansion, DisableExpansion,
     RecordStepSize, EnableRecordVoxel, DisableRecordVoxel, EnableRecordLink,
-    DisableRecordLink, EnableCilia, DisableCilia, EnableCollision, EnableAttach, DisableAttach, DisableCollision,
+    DisableRecordLink, EnableCollision, EnableAttach, DisableAttach, DisableCollision,
     StickDistance, SafetyGuard, LinkDamping, CollisionDamping, SimTime, EnableGravity, DisableGravtiy, GravityAcc,
     EnableFloor, DisableFloor, EnableTemp, DisableTemp, BaseTemp, TempAmp, TempPeriod, LatticeDim, AddMaterial,
     AddVoxel, WriteVXA

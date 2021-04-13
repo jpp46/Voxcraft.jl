@@ -1,5 +1,4 @@
-include("voxcraft.jl")
-using .Voxcraft
+using Voxcraft
 
 DisableGravtiy()
 rmat = AddMaterial(E=10000, RGBA=(255, 0, 0, 255))
