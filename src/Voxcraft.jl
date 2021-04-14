@@ -261,25 +261,6 @@ function WriteVXA(folder)
     y_voxels = length(0:maxy)
     z_voxels = length(0:maxz)
 
-    #=x_offset = 0
-    y_offset = 0
-    z_offset = 0    
-    if minx <= 0
-        x_offset = length(minx:0)
-    else
-        x_offset = -(length(1:minx)-1)
-    end
-    if miny <= 0
-        y_offset = length(miny:0)
-    else
-        y_offset = -(length(1:miny)-1)
-    end
-    if minz <= 0
-        z_offset = length(minz:0)
-    else
-        z_offset = -(length(1:minz)-1)
-    end=#
-
     mat = zeros(Int, x_voxels, y_voxels, z_voxels)
     for (k, m) in voxels
         for i in 1:size(m)[2]
