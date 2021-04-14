@@ -182,16 +182,14 @@
             </Material>
         </Palette>
         <Structure Compression="ASCII_READABLE">
-            <X_Voxels>4</X_Voxels>
-            <Y_Voxels>4</Y_Voxels>
-            <Z_Voxels>6</Z_Voxels>
+            <X_Voxels>5</X_Voxels>
+            <Y_Voxels>5</Y_Voxels>
+            <Z_Voxels>4</Z_Voxels>
             <Data>
-				<Layer><![CDATA[1111000000000000]]></Layer>
-				<Layer><![CDATA[2000200020002000]]></Layer>
-				<Layer><![CDATA[3000000000000000]]></Layer>
-				<Layer><![CDATA[3000000000000000]]></Layer>
-				<Layer><![CDATA[3000000000000000]]></Layer>
-				<Layer><![CDATA[3000000000000000]]></Layer>
+				<Layer><![CDATA[3111120000200002000020000]]></Layer>
+				<Layer><![CDATA[3000000000000000000000000]]></Layer>
+				<Layer><![CDATA[3000000000000000000000000]]></Layer>
+				<Layer><![CDATA[3000000000000000000000000]]></Layer>
 			</Data>
         </Structure>
     </VXC>
