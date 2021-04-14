@@ -283,7 +283,7 @@ function WriteVXA(folder)
     mat = zeros(Int, x_voxels, y_voxels, z_voxels)
     for (k, m) in voxels
         for i in 1:size(m)[2]
-            mat[m[1, i]+x_offset, m[2, i]+y_offset, m[3, i]+z_offset] = k
+            mat[m[1, i]+1, m[2, i]+1, m[3, i]+1] = k
         end
     end
 
