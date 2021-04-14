@@ -7,7 +7,7 @@ export HeapSize, EnableSignals, DisableSignals, EnableCilia, DisableCilia, Enabl
     EnableFloor, DisableFloor, EnableTemp, DisableTemp, BaseTemp, TempAmp, TempPeriod, LatticeDim, AddMaterial,
     AddVoxel, WriteVXA
 
-heapSize = 0.95
+heapSize = 1.0
 HeapSize(v) = heapSize = v
 
 enableSignals = 0
@@ -129,6 +129,9 @@ end
 voxels = Dict()
 function AddVoxel(mat_id, x, y, z)
     global voxels
+    if x < 0 || y < 0 || z < 0
+        @error "Indicies must be positive number!\n voxel at x=$x, y=$y, z=$z not added!"
+    end
     if mat_id in keys(voxels)
         voxels[mat_id] = hcat(voxels[mat_id], [x, y, z])
     else
@@ -243,33 +246,22 @@ function WriteVXA(folder)
     end
     vxa = vxa * "\n"
 
-    maxx, minx = typemin(Int), typemax(Int)
-    maxy, miny = typemin(Int), typemax(Int)
-    maxz, minz = typemin(Int), typemax(Int)
+    maxx, maxy, maxz = typemin(Int), typemin(Int), typemin(Int)
     for (k, m) in voxels
         x = maximum(m[1, :])
         maxx = x > maxx ? x : maxx
 
-        x = minimum(m[1, :])
-        minx = x < minx ? x : minx
-
         y = maximum(m[2, :])
         maxy = y > maxy ? y : maxy
 
-        y = minimum(m[2, :])
-        miny = y < miny ? y : miny
-
         z = maximum(m[3, :])
         maxz = z > maxz ? z : maxz
-
-        z = minimum(m[3, :])
-        minz = z < minz ? z : minz
     end
-    x_voxels = length(minx:maxx)
-    y_voxels = length(miny:maxy)
-    z_voxels = length(minz:maxz)
+    x_voxels = length(0:maxx)
+    y_voxels = length(0:maxy)
+    z_voxels = length(0:maxz)
 
-    x_offset = 0
+    #=x_offset = 0
     y_offset = 0
     z_offset = 0    
     if minx <= 0
@@ -286,7 +278,7 @@ function WriteVXA(folder)
         z_offset = length(minz:0)
     else
         z_offset = -(length(1:minz)-1)
-    end
+    end=#
 
     mat = zeros(Int, x_voxels, y_voxels, z_voxels)
     for (k, m) in voxels
