@@ -135,7 +135,7 @@ function AddVoxel(mat_id, x, y, z)
     if mat_id in keys(voxels)
         voxels[mat_id] = hcat(voxels[mat_id], [x, y, z])
     else
-        voxels[mat_id] = [x, y, z]
+        voxels[mat_id] = reshape([x, y, z], (3, 1))
     end
 end
 
@@ -260,6 +260,10 @@ function WriteVXA(folder)
     x_voxels = length(0:maxx)
     y_voxels = length(0:maxy)
     z_voxels = length(0:maxz)
+
+    @show x_voxels
+    @show y_voxels
+    @show z_voxels
 
     mat = zeros(Int, x_voxels, y_voxels, z_voxels)
     for (k, m) in voxels
