@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<VXA Version="1.1">
+    <Simulator>
+        <EnableSignals>0</EnableSignals> <!--Voxels send signals to each other, set this to 0 -->
+        <EnableCilia>0</EnableCilia> <!--Applies external forces simulating cilia -->
+        <EnableExpansion>0</EnableExpansion> <!--0 only contraction, 1 is contration + expansion -->
+        <EnableTargetCloseness>0</EnableTargetCloseness> <!--Just leave as 0 -->
+        <FitnessFunction> <!--Displacement from center -->
+            <mtSQRT>
+                <mtADD>
+                    <mtMUL>
+                        <mtVAR>x</mtVAR>
+                        <mtVAR>x</mtVAR>
+                    </mtMUL>
+                    <mtMUL>
+                        <mtVAR>y</mtVAR>
+                        <mtVAR>y</mtVAR>
+                    </mtMUL>
+                </mtADD>
+            </mtSQRT>
+        </FitnessFunction>
+        <RecordHistory>
+            <RecordStepSize>100</RecordStepSize> <!--Capture image every 100 time steps -->
+            <RecordVoxel>1</RecordVoxel> <!--Add voxels to the visualization -->
+            <RecordLink>0</RecordLink> <!--Add links to the visualization -->
+        </RecordHistory>
+        <AttachDetach>
+            <EnableCollision>0</EnableCollision> <!--Enable Voxel-Voxel collisions -->
+            <EnableAttach>0</EnableAttach> <!--Enable Sticky Voxels -->
+            <watchDistance>10</watchDistance> <!--How close voxels need to be to stick -->
+            <SafetyGuard>500</SafetyGuard> <!--Makes things stable don't lower, increase if explodes -->
+            <AttachCondition> <!--Always attach -->
+                <Condition_0>
+                    <mtCONST>1</mtCONST>
+                </Condition_0>
+            </AttachCondition>
+        </AttachDetach>
+        <Integration> <!--Choose integrator and fraction of optimal time step -->
+            <Integrator>0</Integrator>
+            <DtFrac>0.9</DtFrac>
+        </Integration>
+        <Damping>
+            <BondDampingZ>1.0</BondDampingZ> <!--Damping on voxel-voxel links -->
+            <ColDampingZ>0.8</ColDampingZ> <!--Damping on voxel-voxel collisions and voxel-floor collisions -->
+            <SlowDampingZ>0.01</SlowDampingZ> <!--Global damping on all movement -->
+        </Damping>
+        <ForceField> <!--Increase 0 times time -->
+            <z_forcefield>
+                <mtMUL>
+                    <mtCONST>0.0</mtCONST>
+                    <mtVAR>t</mtVAR>
+                </mtMUL>
+            </z_forcefield>
+        </ForceField>
+        <StopCondition> <!--Simulate for 2 seconds (when this formula hits zero, STOP!) -->
+            <StopConditionFormula>
+                <mtSUB>
+                    <mtVAR>t</mtVAR>
+                    <mtCONST>2</mtCONST>
+                </mtSUB>
+            </StopConditionFormula>
+        </StopCondition>
+    </Simulator>
+    <Environment>
+        <Gravity>
+            <GravEnabled>1</GravEnabled> <!--Is there gravity -->
+            <GravAcc>-9.80665</GravAcc> <!--Gravitational Accleration -->
+            <FloorEnabled>1</FloorEnabled> <!--Is there a floor -->
+        </Gravity>
+        <Thermal>
+            <TempEnabled>0</TempEnabled> <!--Does the tempurature vary -->
+            <TempAmplitude>0</TempAmplitude> <!--How much expansion and contration -->
+            <TempBase>0</TempBase> <!--Base Temperture -->
+            <VaryTempEnabled>0</VaryTempEnabled> <!--Temperature varies over time -->
+            <TempPeriod>0</TempPeriod> <!--Expansion and contraction speed -->
+        </Thermal>
+    </Environment>
+    <VXC Version="0.94">
+        <Lattice>
+            <Lattice_Dim>0.01</Lattice_Dim> <!--Lattice dimension in meters -->
+            <X_Dim_Adj>1</X_Dim_Adj>
+            <Y_Dim_Adj>1</Y_Dim_Adj>
+            <Z_Dim_Adj>1</Z_Dim_Adj>
+            <X_Line_Offset>0</X_Line_Offset>
+            <Y_Line_Offset>0</Y_Line_Offset>
+            <X_Layer_Offset>0</X_Layer_Offset>
+            <Y_Layer_Offset>0</Y_Layer_Offset>
+        </Lattice>
+        <Voxel>
+            <Vox_Name>BOX</Vox_Name>
+            <X_Squeeze>1</X_Squeeze>
+            <Y_Squeeze>1</Y_Squeeze>
+            <Z_Squeeze>1</Z_Squeeze>
+        </Voxel>
+        <Palette>
+            <Material ID="1"> <!--Material ID -->
+                <MatType>0</MatType> <!--Don't touch this -->
+                <Name>1</Name> <!--Material Name -->
+                <Display> <!--RGBA color of material -->
+                    <Red>1.0</Red>
+                    <Green>0.0</Green>
+                    <Blue>0.0</Blue>
+                    <Alpha>1.0</Alpha>
+                </Display>
+                <Mechanical>
+                    <Sticky>0</Sticky> <!--Is it sticky -->
+                    <isPaceMaker>0</isPaceMaker> <!--For signaling (this voxel will send out signals) -->
+                    <PaceMakerPeriod>1.0</PaceMakerPeriod> <!--How often it signals -->
+                    <Cilia>0</Cilia> <!--Does it have cilia -->
+                    <MatModel>0</MatModel> <!--0 for simple spring, 1 for-->
+                    <Elastic_Mod>10000</Elastic_Mod> <!--How stiff the material is -->
+                    <Plastic_Mod>0</Plastic_Mod>
+                    <Yield_Stress>0</Yield_Stress>
+                    <FailModel>0</FailModel>
+                    <Fail_Stress>0</Fail_Stress>
+                    <Fail_Strain>0</Fail_Strain>
+                    <Density>1000</Density> <!--How dense the material is -->
+                    <Poissons_Ratio>0.35</Poissons_Ratio> <!--Poission ratio -->
+                    <CTE>0</CTE> <!--Coeffecient of thermal expansion -->
+                    <MaterialTempPhase>0</MaterialTempPhase> <!--Phase offset for temperature -->
+                    <uStatic>1</uStatic> <!--Static friction -->
+                    <uDynamic>0.8</uDynamic> <!--Dynamic Friction -->
+                </Mechanical>
+            </Material>
+        </Palette>
+        <Structure Compression="ASCII_READABLE">
+            <X_Voxels>1</X_Voxels>
+            <Y_Voxels>1</Y_Voxels>
+            <Z_Voxels>4</Z_Voxels>
+            <Data>
+				<Layer><![CDATA[0]]></Layer>
+				<Layer><![CDATA[0]]></Layer>
+				<Layer><![CDATA[0]]></Layer>
+				<Layer><![CDATA[1]]></Layer>
+			</Data>
+        </Structure>
+    </VXC>
+</VXA>

@@ -261,17 +261,9 @@ function WriteVXA(folder)
     y_voxels = length(0:maxy)
     z_voxels = length(0:maxz)
 
-    @show x_voxels
-    @show y_voxels
-    @show z_voxels
-
     mat = zeros(Int, x_voxels, y_voxels, z_voxels)
     for (k, m) in voxels
-        @show k
-        @show m
         for i in 1:size(m)[2]
-            @show i
-            @show mat
             mat[m[1, i]+1, m[2, i]+1, m[3, i]+1] = k
         end
     end
@@ -281,8 +273,6 @@ function WriteVXA(folder)
         data = data * "\n" * "\t\t\t\t<Layer><![CDATA$(replace(string(mat[:, :, i][:]), ", " => ""))]></Layer>"
     end
     data = data * "\n" * "\t\t\t</Data>"
-
-
 
     vxa = vxa *
 "        </Palette>
