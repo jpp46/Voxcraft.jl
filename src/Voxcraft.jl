@@ -8,80 +8,80 @@ export HeapSize, EnableSignals, DisableSignals, EnableCilia, DisableCilia, Enabl
     AddVoxel, WriteVXA
 
 heapSize = 1.0
-HeapSize(v) = heapSize = v
+HeapSize(v) = global heapSize = v
 
 enableSignals = 0
-EnableSignals() = enableSignals = 1
-DisableSignals() = enableSignals = 0
+EnableSignals() = global enableSignals = 1
+DisableSignals() = global enableSignals = 0
 
 enableCilia = 0
-EnableCilia() = enableCilia = 1
-DisableCilia() = enableCilia = 0
+EnableCilia() = global enableCilia = 1
+DisableCilia() = global enableCilia = 0
 
 enableExpansion = 0
-EnableExpansion() = enableExpansion = 1
-DisableExpansion() = enableExpansion = 0
+EnableExpansion() = global enableExpansion = 1
+DisableExpansion() = global enableExpansion = 0
 
 recordStepSize = 100
-RecordStepSize(v) = recordStepSize = v
+RecordStepSize(v) = global recordStepSize = v
 
 enableRecordVoxel = 1
-EnableRecordVoxel() = enableRecordVoxel = 1
-DisableRecordVoxel() = enableRecordVoxel = 0
+EnableRecordVoxel() = global enableRecordVoxel = 1
+DisableRecordVoxel() = global enableRecordVoxel = 0
 
 enableRecordLink = 0
-EnableRecordLink() = enableRecordLink = 1
-DisableRecordLink() = enableRecordLink = 0
+EnableRecordLink() = global enableRecordLink = 1
+DisableRecordLink() = global enableRecordLink = 0
 
 enableCollisions = 0
-EnableCollision() = enableCollisions = 1
-DisableCollision() = enableCollisions = 0
+EnableCollision() = global enableCollisions = 1
+DisableCollision() = global enableCollisions = 0
 
 enableAttach = 0
-EnableAttach() = enableAttach = 1
-DisableAttach() = enableAttach = 0
+EnableAttach() = global enableAttach = 1
+DisableAttach() = global enableAttach = 0
 
 stickDistance = 10
-StickDistance(v) = stickDistance = v
+StickDistance(v) = global stickDistance = v
 
 safteyGuard = 500
-SafetyGuard(v) = safteyGuard = v
+SafetyGuard(v) = global safteyGuard = v
 
 linkDamping = 1.0
-LinkDamping(v) = linkDamping = v
+LinkDamping(v) = global linkDamping = v
 
 collisionDamping = 0.8
-CollisionDamping(v) = collisionDamping = v
+CollisionDamping(v) = global collisionDamping = v
 
 simTime = 2
-SimTime(v) = simTime = v
+SimTime(v) = global simTime = v
 
 enableGravity = 1
-EnableGravity() = enableGravity = 1
-DisableGravtiy() = enableGravity = 0
+EnableGravity() = global enableGravity = 1
+DisableGravtiy() = global enableGravity = 0
 
 gravity = -9.80665
-GravityAcc(v) = gravtiy = v
+GravityAcc(v) = global gravtiy = v
 
 enableFloor = 1
-EnableFloor() = enableFloor = 1
-DisableFloor() = DisableFloor = 0
+EnableFloor() = global enableFloor = 1
+DisableFloor() = global DisableFloor = 0
 
 enableTemp = 0
-EnableTemp() = enableTemp = 1
-DisableTemp() = enableTemp = 0
+EnableTemp() = global enableTemp = 1
+DisableTemp() = global enableTemp = 0
 
 baseTemp = 0
-BaseTemp(v) = baseTemp = v
+BaseTemp(v) = global baseTemp = v
 
 tempAmp = 0
-TempAmp(v) = tempAmp = v
+TempAmp(v) = global tempAmp = v
 
 tempPeriod = 0
-TempPeriod(v) = tempPeriod = v
+TempPeriod(v) = global tempPeriod = v
 
 latticeDim = 0.01
-LatticeDim(v) = latticeDim = v
+LatticeDim(v) = global latticeDim = v
 
 id = 1
 mats = []
