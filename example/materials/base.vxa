@@ -108,7 +108,65 @@
                     <PaceMakerPeriod>1.0</PaceMakerPeriod> <!--How often it signals -->
                     <Cilia>0</Cilia> <!--Does it have cilia -->
                     <MatModel>0</MatModel> <!--0 for simple spring, 1 for-->
+                    <Elastic_Mod>2000000</Elastic_Mod> <!--How stiff the material is -->
+                    <Plastic_Mod>0</Plastic_Mod>
+                    <Yield_Stress>0</Yield_Stress>
+                    <FailModel>0</FailModel>
+                    <Fail_Stress>0</Fail_Stress>
+                    <Fail_Strain>0</Fail_Strain>
+                    <Density>20000</Density> <!--How dense the material is -->
+                    <Poissons_Ratio>0.35</Poissons_Ratio> <!--Poission ratio -->
+                    <CTE>0</CTE> <!--Coeffecient of thermal expansion -->
+                    <MaterialTempPhase>0</MaterialTempPhase> <!--Phase offset for temperature -->
+                    <uStatic>1</uStatic> <!--Static friction -->
+                    <uDynamic>0.8</uDynamic> <!--Dynamic Friction -->
+                </Mechanical>
+            </Material>
+            <Material ID="2"> <!--Material ID -->
+                <MatType>0</MatType> <!--Don't touch this -->
+                <Name>2</Name> <!--Material Name -->
+                <Display> <!--RGBA color of material -->
+                    <Red>0.0</Red>
+                    <Green>1.0</Green>
+                    <Blue>0.0</Blue>
+                    <Alpha>1.0</Alpha>
+                </Display>
+                <Mechanical>
+                    <Sticky>0</Sticky> <!--Is it sticky -->
+                    <isPaceMaker>0</isPaceMaker> <!--For signaling (this voxel will send out signals) -->
+                    <PaceMakerPeriod>1.0</PaceMakerPeriod> <!--How often it signals -->
+                    <Cilia>0</Cilia> <!--Does it have cilia -->
+                    <MatModel>0</MatModel> <!--0 for simple spring, 1 for-->
                     <Elastic_Mod>10000</Elastic_Mod> <!--How stiff the material is -->
+                    <Plastic_Mod>0</Plastic_Mod>
+                    <Yield_Stress>0</Yield_Stress>
+                    <FailModel>0</FailModel>
+                    <Fail_Stress>0</Fail_Stress>
+                    <Fail_Strain>0</Fail_Strain>
+                    <Density>1000</Density> <!--How dense the material is -->
+                    <Poissons_Ratio>0.35</Poissons_Ratio> <!--Poission ratio -->
+                    <CTE>0</CTE> <!--Coeffecient of thermal expansion -->
+                    <MaterialTempPhase>0</MaterialTempPhase> <!--Phase offset for temperature -->
+                    <uStatic>1</uStatic> <!--Static friction -->
+                    <uDynamic>0.8</uDynamic> <!--Dynamic Friction -->
+                </Mechanical>
+            </Material>
+            <Material ID="3"> <!--Material ID -->
+                <MatType>0</MatType> <!--Don't touch this -->
+                <Name>3</Name> <!--Material Name -->
+                <Display> <!--RGBA color of material -->
+                    <Red>0.0</Red>
+                    <Green>1.0</Green>
+                    <Blue>0.0</Blue>
+                    <Alpha>1.0</Alpha>
+                </Display>
+                <Mechanical>
+                    <Sticky>0</Sticky> <!--Is it sticky -->
+                    <isPaceMaker>0</isPaceMaker> <!--For signaling (this voxel will send out signals) -->
+                    <PaceMakerPeriod>1.0</PaceMakerPeriod> <!--How often it signals -->
+                    <Cilia>0</Cilia> <!--Does it have cilia -->
+                    <MatModel>0</MatModel> <!--0 for simple spring, 1 for-->
+                    <Elastic_Mod>1000</Elastic_Mod> <!--How stiff the material is -->
                     <Plastic_Mod>0</Plastic_Mod>
                     <Yield_Stress>0</Yield_Stress>
                     <FailModel>0</FailModel>
@@ -124,14 +182,16 @@
             </Material>
         </Palette>
         <Structure Compression="ASCII_READABLE">
-            <X_Voxels>1</X_Voxels>
-            <Y_Voxels>1</Y_Voxels>
-            <Z_Voxels>4</Z_Voxels>
+            <X_Voxels>13</X_Voxels>
+            <Y_Voxels>3</Y_Voxels>
+            <Z_Voxels>6</Z_Voxels>
             <Data>
-				<Layer><![CDATA[0]]></Layer>
-				<Layer><![CDATA[0]]></Layer>
-				<Layer><![CDATA[0]]></Layer>
-				<Layer><![CDATA[1]]></Layer>
+				<Layer><![CDATA[010000000001011100000001110100000000010]]></Layer>
+				<Layer><![CDATA[000000000000001000000000100000000000000]]></Layer>
+				<Layer><![CDATA[000000000000001000000000100000000000000]]></Layer>
+				<Layer><![CDATA[000000000000001000000000100000000000000]]></Layer>
+				<Layer><![CDATA[000000000000001000000000100000000000000]]></Layer>
+				<Layer><![CDATA[000000000000001333333333100000000000000]]></Layer>
 			</Data>
         </Structure>
     </VXC>
