@@ -132,11 +132,7 @@ function AddVoxel(mat_id, x, y, z)
     if x < 0 || y < 0 || z < 0
         @error "Indicies must be positive number!\n voxel at x=$x, y=$y, z=$z not added!"
     end
-    if mat_id in keys(voxels)
-        voxels[mat_id] = hcat(voxels[mat_id], [x, y, z])
-    else
-        voxels[mat_id] = reshape([x, y, z], (3, 1))
-    end
+    voxels[(x, y, z)] = mat_id
 end
 
 
@@ -246,26 +242,19 @@ function WriteVXA(folder)
     end
     vxa = vxa * "\n"
 
-    maxx, maxy, maxz = typemin(Int), typemin(Int), typemin(Int)
-    for (k, m) in voxels
-        x = maximum(m[1, :])
-        maxx = x > maxx ? x : maxx
-
-        y = maximum(m[2, :])
-        maxy = y > maxy ? y : maxy
-
-        z = maximum(m[3, :])
-        maxz = z > maxz ? z : maxz
+    xs = []; ys= []; zs = [];
+    for (idx, id) in voxels
+        push!(xs, idx[1])
+        push!(ys, idx[2])
+        push!(zs, idx[3])
     end
-    x_voxels = length(0:maxx)
-    y_voxels = length(0:maxy)
-    z_voxels = length(0:maxz)
+    x_voxels = length(0:maximum(xs))
+    y_voxels = length(0:maximum(ys))
+    z_voxels = length(0:maximum(zs))
 
     mat = zeros(Int, x_voxels, y_voxels, z_voxels)
-    for (k, m) in voxels
-        for i in 1:size(m)[2]
-            mat[m[1, i]+1, m[2, i]+1, m[3, i]+1] = k
-        end
+    for (idx, id) in voxels
+        mat[idx[1]+1, idx[2]+1, idx[3]+1] = id
     end
 
     data = "<Data>"
