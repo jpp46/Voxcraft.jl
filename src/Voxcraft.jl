@@ -269,7 +269,7 @@ function WriteVXA(folder)
 
     phaseOffset = "<PhaseOffset>"
     for i in 1:size(mat)[3]
-        phaseOffset = phaseOffset * "\n" * "\t\t\t\t<Layer><![CDATA$(replace(string(mat[:, :, i][:]), ", " => ","))]></Layer>"
+        phaseOffset = phaseOffset * "\n" * "\t\t\t\t<Layer><![CDATA$(replace(string(phase[:, :, i][:]), ", " => ","))]></Layer>"
     end
     phaseOffset = phaseOffset * "\n" * "\t\t\t</PhaseOffset>"
 
