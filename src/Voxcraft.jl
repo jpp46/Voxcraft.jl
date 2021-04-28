@@ -18,7 +18,7 @@ enableCilia = 0
 EnableCilia() = global enableCilia = 1
 DisableCilia() = global enableCilia = 0
 
-enableExpansion = 0
+enableExpansion = 1
 EnableExpansion() = global enableExpansion = 1
 DisableExpansion() = global enableExpansion = 0
 
@@ -85,6 +85,7 @@ LatticeDim(v) = global latticeDim = v
 
 id = 1
 mats = []
+matPhase = Dict()
 function AddMaterial(;E=10000, RHO=1000, P=0.35, CTE=0, tempPhase=0, uStatic=1, uDynamic=0.8,
                       isSticky=0, isPaceMaker=0, paceMakerPeriod=1.0, hasCilia=0, isBreakable=0,
                       RGBA=(rand(1:255), rand(1:255), rand(1:255), 255)
@@ -122,6 +123,7 @@ function AddMaterial(;E=10000, RHO=1000, P=0.35, CTE=0, tempPhase=0, uStatic=1, 
                 </Mechanical>
             </Material>"
     push!(mats, mat)
+    matPhase[id] = tempPhase
     id += 1
     return id-1
 end
@@ -253,8 +255,10 @@ function WriteVXA(folder)
     z_voxels = length(0:maximum(zs))
 
     mat = zeros(Int, x_voxels, y_voxels, z_voxels)
+    phase = zeros(Float64, x_voxels, y_voxels, z_voxels)
     for (idx, id) in voxels
         mat[idx[1]+1, idx[2]+1, idx[3]+1] = id
+        phase[idx[1]+1, idx[2]+1, idx[3]+1] = matPhase[id]
     end
 
     data = "<Data>"
@@ -263,6 +267,12 @@ function WriteVXA(folder)
     end
     data = data * "\n" * "\t\t\t</Data>"
 
+    phaseOffset = "<PhaseOffset>"
+    for i in 1:size(mat)[3]
+        phaseOffset = phaseOffset * "\n" * "\t\t\t\t<Layer><![CDATA$(replace(string(mat[:, :, i][:]), ", " => ","))]></Layer>"
+    end
+    phaseOffset = phaseOffset * "\n" * "\t\t\t</PhaseOffset>"
+
     vxa = vxa *
 "        </Palette>
         <Structure Compression=\"ASCII_READABLE\">
@@ -270,6 +280,7 @@ function WriteVXA(folder)
             <Y_Voxels>$y_voxels</Y_Voxels>
             <Z_Voxels>$z_voxels</Z_Voxels>
             $data
+            $phaseOffset
         </Structure>
     </VXC>
 </VXA>"
