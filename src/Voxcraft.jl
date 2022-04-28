@@ -254,6 +254,8 @@ function WriteVXA(folder)
     y_voxels = length(0:maximum(ys))
     z_voxels = length(0:maximum(zs))
 
+    global voxels = Dict()
+
     mat = zeros(Int, x_voxels, y_voxels, z_voxels)
     phase = zeros(Float64, x_voxels, y_voxels, z_voxels)
     for (idx, id) in voxels
